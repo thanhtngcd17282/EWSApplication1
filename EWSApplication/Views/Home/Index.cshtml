@@ -1,0 +1,399 @@
+﻿@model List<EWSApplication.Entities.DBContext.Post>
+
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+@Styles.Render("~/Assets/codemirror")
+@Scripts.Render("~/bundles/codemirror")
+
+<div class="search-sec">
+    <div class="container">
+        <div class="search-box">
+            <form>
+                <input type="text" name="search" placeholder="Search keywords">
+                <button type="submit">Search </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="filter-secs">
+                            <div class="filter-heading">
+                                <h3>Filters</h3>
+                                <a href="#" title="">Clear all filters</a>
+                            </div>
+                            <div class="paddy">
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Skills</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <form>
+                                        <input type="text" name="search-skills" placeholder="Search skills">
+                                    </form>
+                                </div>
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Availabilty</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <ul class="avail-checks">
+                                        <li>
+                                            <input type="radio" name="cc" id="c1">
+                                            <label for="c1">
+                                                <span></span>
+                                            </label>
+                                            <small>Hourly</small>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="cc" id="c2">
+                                            <label for="c2">
+                                                <span></span>
+                                            </label>
+                                            <small>Part Time</small>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="cc" id="c3">
+                                            <label for="c3">
+                                                <span></span>
+                                            </label>
+                                            <small>Full Time</small>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Job Type</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <form class="job-tp">
+                                        <select>
+                                            <option>Select a job type</option>
+                                            <option>Select a job type</option>
+                                            <option>Select a job type</option>
+                                            <option>Select a job type</option>
+                                        </select>
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </form>
+                                </div>
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Pay Rate / Hr ($)</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <div class="rg-slider">
+                                        <input class="rn-slider slider-input" type="hidden" value="5,50"
+                                               style="display: none;">
+                                        <div class="slider-container theme-green" style="width: 300px;">
+                                            <div class="back-bar">
+                                                <div class="selected-bar" style="width: 93px; left: 10.5px;"></div>
+                                                <div class="pointer low" style="left: 4px;"></div>
+                                                <div class="pointer-label low" style="left: 0px;">5</div>
+                                                <div class="pointer high" style="left: 97px;"></div>
+                                                <div class="pointer-label high" style="left: 78px;">50</div>
+                                                <div class="clickable-dummy"></div>
+                                            </div>
+                                            <div class="scale"></div>
+                                        </div>
+                                    </div>
+                                    <div class="rg-limit">
+                                        <h4>1</h4>
+                                        <h4>100+</h4>
+                                    </div>
+                                </div>
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Experience Level</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <form class="job-tp">
+                                        <select>
+                                            <option>Select a experience level</option>
+                                            <option>3 years</option>
+                                            <option>4 years</option>
+                                            <option>5 years</option>
+                                        </select>
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </form>
+                                </div>
+                                <div class="filter-dd">
+                                    <div class="filter-ttl">
+                                        <h3>Countries</h3>
+                                        <a href="#" title="">Clear</a>
+                                    </div>
+                                    <form class="job-tp">
+                                        <select>
+                                            <option>Select a country</option>
+                                            <option>United Kingdom</option>
+                                            <option>United States</option>
+                                            <option>Russia</option>
+                                        </select>
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="main-ws-sec">
+                            <div class="post-topbar">
+                                <div class="user-picy">
+                                    <img src="~/Assets/images/resources/user.png" alt="">
+                                </div>
+                                <div class="post-st">
+                                    <ul>
+                                        <li><a class="post_project" href="#" title="">New Post</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="posts-section">
+                                @foreach (var item in Model)
+                                    {
+                                    <div class="post-bar">
+                                        <div class="post_topbar">
+                                            <div class="usy-dt">
+                                                <img src="images/resources/us-pic.png" alt="">
+                                                <div class="usy-name">
+                                                    <h3>@item.userid</h3>
+                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="ed-opts">
+                                                <a href="#" title="" class="ed-opts-open">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <ul class="ed-options">
+                                                    <li><a href="#" title="">Edit Post</a></li>
+                                                    <li><a href="#" title="">Unsaved</a></li>
+                                                    <li><a href="#" title="">Unbid</a></li>
+                                                    <li><a href="#" title="">Close</a></li>
+                                                    <li><a href="#" title="">Hide</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="epi-sec">
+                                            <ul class="bk-links">
+                                                <li><a href="#" title=""><i class="fas fa-bookmark"></i></a></li>
+                                                <li><a href="#" title=""><i class="fas fa-envelope"></i></a></li>
+                                                <li><a href="#" title="" class="bid_now">Bid Now</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="job_descp">
+                                            <h3>@item.title</h3>
+                                            <hr />
+                                            <p>
+                                                @item.content <a href="@Url.Action("detail", "Post")?postId=@{@item.postid;}" title="">view more</a>
+                                            </p>
+                                            <ul class="skill-tags">
+                                                @{ foreach (var @tag in @item.tag.Split())
+                                                    {
+                                                    <li><a href="#" title="">@tag</a></li>
+                                                    } }
+                                            </ul>
+                                        </div>
+                                        <div class="job-status-bar">
+                                            <ul class="like-com">
+                                                <li>
+                                                    <a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
+                                                    <img src="images/liked-img.png" alt="">
+                                                    <span>@item.like</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="com">
+                                                        <i class="fas fa-comment-alt"></i> Comments
+                                                        15
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <a href="#"><i class="fas fa-eye"></i>Views @item.view</a>
+                                        </div>
+                                    </div>
+                                    }
+                                <div class="process-comm">
+                                    <div class="spinner">
+                                        <div class="bounce1"></div>
+                                        <div class="bounce2"></div>
+                                        <div class="bounce3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="right-sidebar">
+                            <div class="widget widget-about">
+                                <img src="images/wd-logo.png" alt="">
+                                <h3>Track Time on Workwise</h3>
+                                <span>Pay only for the Hours worked</span>
+                                <div class="sign_link">
+                                    <h3><a href="sign-in.html" title="">Sign up</a></h3>
+                                    <a href="#" title="">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="widget widget-jobs">
+                                <div class="sd-title">
+                                    <h3>Top Jobs</h3>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </div>
+                                <div class="jobs-list">
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior Product Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior UI / UX Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Junior Seo Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior PHP Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior Developer Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget widget-jobs">
+                                <div class="sd-title">
+                                    <h3>Most Viewed This Week</h3>
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </div>
+                                <div class="jobs-list">
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior Product Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Senior UI / UX Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="job-details">
+                                            <h3>Junior Seo Designer</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        </div>
+                                        <div class="hr-rate">
+                                            <span>$25/hr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="post-popup pst-pj">
+    <div class="post-project">
+        <h3>New Post</h3>
+        <div class="post-project-fields">
+            @using (Html.BeginForm("Create", "Post", FormMethod.Post,
+               new
+               {
+                   enctype = "multipart/form-data",
+                   id = "UploadForm",
+                   name = "UploadForm",
+                   target = "UploadTarget"
+               }))
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="text" name="title" placeholder="Title">
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea id='tagarea' name="tag" id="tag"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea name="content" placeholder="Content"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <input type="file" class="custom-file-input" style="padding: 0px 1px; margin-left:0px " id="files" name="files" multiple="multiple">
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="slideThree">
+                            <input type="checkbox" id="slideThree" name="anonymous" />
+                            <label for="slideThree">Anonymous</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <ul>
+                            <li><button class="active" type="submit" value="post">Post</button></li>
+                            <li><a href="#" id="cancel-project_post" title="">Cancel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <a href="#" title=""><i class="far fa-times-circle"></i></a>
+    </div>
+</div>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("tagarea"), {
+        //lineNumbers: true,
+        mode: "anhmode",
+        //matchBrackets: true
+    });
+    editor.setOption('placeholder', "Each space for tags ex: hobby city");
+    $("#UploadForm").submit(function (eventObj) {
+        $("#tag").value = editor.getValue();
+        return true;
+    });
+</script>
