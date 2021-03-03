@@ -15,7 +15,7 @@ namespace EWSApplication.Entities.DBContext
 
         [Required]
         [StringLength(100)]
-        [DisplayName ("Tag Name")]
+        
         public string tagname { get; set; }
 
         [Required]

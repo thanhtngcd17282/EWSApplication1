@@ -15,16 +15,13 @@ namespace EWSApplication.Entities.DBContext
 
         [Required]
         [StringLength(100)]
-        [DisplayName(" Student Name")]
 
         public string studentname { get; set; }
 
         [Required]
         [StringLength(10)]
-        [DisplayName(" Student Gender")]
         public string studentgender { get; set; }
 
-        [DisplayName(" Student DoB")]
         public DateTime studentdob { get; set; }
 
         [Required]
