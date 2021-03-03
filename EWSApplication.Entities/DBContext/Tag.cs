@@ -2,6 +2,7 @@ namespace EWSApplication.Entities.DBContext
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -14,6 +15,7 @@ namespace EWSApplication.Entities.DBContext
 
         [Required]
         [StringLength(100)]
+        [DisplayName ("Tag Name")]
         public string tagname { get; set; }
 
         [Required]
