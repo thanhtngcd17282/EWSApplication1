@@ -16,11 +16,7 @@ namespace EWSApplication.Controllers
         public ActionResult Index(string mode = "all")
         {
             List<Post> lst = new List<Post>();
-            // xử lí mode render
-            // mode = all ->> GetAllPost
-            // mode = popular ->> GetTopPopularPost
-            // mode = topview ->> GetTopViewpost
-            // mode = lastest ->> GetTopLastPost
+           
             if(mode == "all")
             {
                 lst= PostBLL.Post_GetAllPost();

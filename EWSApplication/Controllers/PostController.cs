@@ -12,16 +12,14 @@ namespace EWSApplication.Controllers
 {
     public class PostController : Controller
     {
-        // GET: Post
+        
         public ActionResult Index()
         {
             return View();
         }
 
         public ActionResult Detail(int postId)
-        {
-            //xử lí dữ liệu post
-            // dữ liệu post gồm:......           
+        {          
             Post postData = new Post();
             postData= PostBLL.Post_GetDetailsPost(postId);
             ViewBag.ListComt = PostBLL.Post_GetListCommentOfPost(postId);
